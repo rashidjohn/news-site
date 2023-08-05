@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            Yangiliklar saytiga xush kelibsiz
+        {% endblock title %}
+    </title>
+    <style>
+            .helptext,ul {
+                display:none;
+            }
+    </style>
+</head>
+<body>
+<h1><a href="{% url 'home' %}" style="color:black">Rashid Doniyorov</a></h1>
+<main>
+  {% block content %}
+  {% endblock content %}
+
+</main>
+</body>
+</html>

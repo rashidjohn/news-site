@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load hitcount_tags %}
+{% block title %} Barcha maqolalar shu yerda {% endblock title %}
+
+{% block content %}
+{% for article in object_list %}
+<a href="{% url 'article_detail' article.pk %}">
+    <h3 style="color:blue">{{ article.title }}</h3>
+</a>
+<p>{{ article.author }} tomindan yozildi | {{ article.date }} | 👁: {% get_hit_count for article %} ko'rishlar soni</p>
+<p style="font-size:20px">{{ article.body }}</p>
+
+<p style="text-align:center">
+    <button style="background-color:green">
+        <a href="{% url 'article_edit' article.pk %}" style="color:white">Tahrirlash</a></button> |
+    <button style="background-color:red">
+        <a href="{% url 'article_delete' article.pk %}" style="color:white">O'chirish</a></button></p>
+<br>
+{% endfor %}
+{% endblock content %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %} Bosh sahifa {% endblock title %}
+
+{% block content %}
+<div style="text-align:center">
+<h1>Yangiliklar sayti</h1>
+<p>Eng tezkor yangiliklar bizning saytimizda</p>
+<h1>
+    <button type="submit" style="background-color:blue;font-size:22px">
+        <a href="{% url 'article_list' %}" style="color:orange">Barcha maqolalarni ko'rish</a>
+    </button>
+    <hr>
+    <p style="text-align:right">
+        <button type="submit" style="background-color:yellow">
+            <a href="{% url 'article_new' %}">Yangi maqola</a>
+        </button> |
+        {% if user.is_authenticated %}
+        <button type="submit" style="background-color:red">
+            <a href="{% url 'password_change' %}">Parolni almashtirish</a>
+        </button> |
+        <button type="submit" style="background-color:green">
+            <a href="{% url 'logout' %}">Log Out</a>
+        </button>
+        {% else %}
+        <button type="submit" style="background-color:green">
+            <a href="{% url 'login' %}">Log In</a>
+        </button> |
+        <button type="submit" style="background-color:orange">
+            <a href="{% url 'signup' %}">Sign Up</a>
+        </button>
+        {% endif %}
+    </p>
+</h1>
+</div>
+{% endblock content %}
